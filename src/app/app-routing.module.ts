@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { DropZoneComponent } from './component/drop-zone/drop-zone.component';
+import { DropZoneComponent } from './component/dropzone/dropzone.component';
 
 const routes: Routes = [];
 

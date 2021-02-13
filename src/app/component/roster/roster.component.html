@@ -1,0 +1,23 @@
+<section class="roster">
+  <section class="filter-controls">
+    <!-- <input class="cb-filter" type="checkbox" (change)="changed()" [checked]="checked"> -->
+    <div class="mains" (click)="mainClick()">Mains</div>
+  </section>
+  <main class="table">
+    <div class="header" *ngIf="characters.length > 0">
+      <div class="item name">Character Name</div>
+      <div class="item level">Level</div>
+      <div class="item eq-class">Class</div>
+      <div class="item rank">Rank</div>
+      <div class="item note">Public Note</div>
+    </div>
+    <hr *ngIf="characters.length > 0">
+    <div class="row" *ngFor="let character of characters">
+      <div class="item name">{{ character.name }}</div>
+      <div class="item level">{{ character.level }}</div>
+      <div class="item eq-class">{{ character.eqClass }}</div>
+      <div class="item rank">{{ character.rank }}</div>
+      <div class="item note">{{ character.note }}</div>
+    </div>
+  </main>
+</section>

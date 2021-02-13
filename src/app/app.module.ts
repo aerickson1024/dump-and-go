@@ -3,14 +3,16 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { DropZoneComponent } from './component/drop-zone/drop-zone.component';
+import { DropZoneComponent } from './component/dropzone/dropzone.component';
 import { DropzoneDirective } from './directive/dropzone.directive';
+import { RosterComponent } from './component/roster/roster.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     DropZoneComponent,
-    DropzoneDirective
+    DropzoneDirective,
+    RosterComponent
   ],
   imports: [
     BrowserModule,

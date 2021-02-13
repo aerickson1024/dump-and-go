@@ -1,0 +1,65 @@
+.roster {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  .filter-controls {
+    // outline: 1px solid purple;
+    width: 60%;
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    .mains {
+      padding: .5rem 1.25rem;
+      border: 2px solid rgb(99, 164, 64);
+      border-radius: 6px;
+      color: rgb(99, 164, 64);
+    }
+  }
+  .table {
+    // outline: 1px solid yellow;
+    width: 60%;
+    margin-top: 50px;
+    .header, .row {
+      display: flex;
+      justify-content: space-between;
+      .item {
+        display: inline-block;
+        color: rgb(255, 255, 255);
+        width: 100%;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        line-height: 2.5rem;
+      }
+      .name {
+        padding-left: 5px;
+      }
+      .level {
+        max-width: 75px;
+        text-align: center;
+      }
+      .eq-class {
+      }
+      .rank {
+      }
+      .note {
+      }
+    }
+    .header {
+      .item {
+        font-size: 1.2rem;
+        font-weight: bold;
+      }
+    }
+    .row:nth-child(odd) {
+      background-color: rgb(52, 59, 65);
+    }
+    .row:nth-child(even) {
+      background-color: rgb(58, 65, 73);
+    }
+    hr {
+      border: 2px solid rgb(99, 164, 64);
+    }
+  }
+}

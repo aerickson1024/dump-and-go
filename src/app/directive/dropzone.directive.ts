@@ -5,22 +5,20 @@ import { Directive, HostBinding, HostListener, Output, EventEmitter, OnInit } fr
 })
 export class DropzoneDirective implements OnInit {
   @HostBinding('class.dropzone-activated') activated = false;
-  @HostListener('dragover', ['$event'])
-  onDragover(event: PointerEvent) {
+  @HostListener('dragover', ['$event']) onDragover(event: PointerEvent): void {
+    console.log('you drug over a file!');
     event.stopPropagation();
     event.preventDefault();
-    console.log('you drug over a file!');
     this.activated = true;
   }
-  @HostListener('dragleave', ['$event'])
-  onDragleave(event: PointerEvent) {
+  @HostListener('dragleave', ['$event']) onDragleave(event: PointerEvent): void {
     console.log('file has left');
     this.activated = false;
   }
-  @HostListener('drop', ['$event'])
-  onDrop(event: any) {
-    event.preventDefault();
+  @HostListener('drop', ['$event']) onDrop(event: any): void {
     console.log('dropped file!');
+    event.preventDefault();
+    this.activated = false;
 
     
     if (event.dataTransfer) {

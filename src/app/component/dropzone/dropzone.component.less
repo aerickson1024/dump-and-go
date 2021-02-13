@@ -1,0 +1,31 @@
+.drop-zone {
+  width: 100%;
+  height: 150px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgb(58, 65, 73);
+
+  .droppable-area {
+    width: 75%;
+    height: 75%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 4px dashed rgb(115, 115, 115);
+    border-radius: 30px;
+
+    .message {
+      font-size: 2rem;
+      color: rgb(115, 115, 115);
+    }
+
+    &.dropzone-activated {
+      border: 4px dashed rgb(200, 200, 200);
+
+      .message {
+        color: rgb(200, 200, 200);
+      }
+    }
+  }
+}

@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { DropZoneComponent } from './drop-zone.component';
+import { RosterComponent } from './roster.component';
 
-describe('DropZoneComponent', () => {
-  let component: DropZoneComponent;
-  let fixture: ComponentFixture<DropZoneComponent>;
+describe('RosterComponent', () => {
+  let component: RosterComponent;
+  let fixture: ComponentFixture<RosterComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ DropZoneComponent ]
+      declarations: [ RosterComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(DropZoneComponent);
+    fixture = TestBed.createComponent(RosterComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
