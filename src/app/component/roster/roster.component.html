@@ -5,7 +5,7 @@
       <div class="filter main-alts" [class.activated]="filterMainAlts" (click)="toggleMainAltsFilter()">Main Alts</div>
       <div class="filter alts" [class.activated]="filterAlts" (click)="toggleAltsFilter()">Alts</div>
     </section>
-    <div class="copy" [class.copied]="copied" (click)="copyToClipboard()"><i class="far fa-copy"></i></div>
+    <div class="copy" [class.copied]="copied" (click)="copyToClipboard()" title="Copy to Clipboard"><i class="far fa-copy"></i></div>
   </section>
   <main class="table">
     <div class="header" *ngIf="characters.length > 0">
