@@ -32,4 +32,15 @@ export class DataParserService {
       }
     });
   }
+
+  formatForClipboard(filteredCharacters: Array<Character>): string {
+    console.log('inside clipboard function');
+    let stringBuilder = '';
+
+    filteredCharacters.reduce((stringBuild: string, character: Character) => {
+      return stringBuilder = stringBuilder.concat(`${character.name}\r\n`);
+    }, stringBuilder);
+
+    return stringBuilder;
+  }
 }

@@ -6,20 +6,23 @@ import { AppComponent } from './app.component';
 import { DropZoneComponent } from './component/dropzone/dropzone.component';
 import { DropzoneDirective } from './directive/dropzone.directive';
 import { RosterComponent } from './component/roster/roster.component';
+import { RosterPipe } from './pipe/roster.pipe';
 
 @NgModule({
   declarations: [
     AppComponent,
     DropZoneComponent,
     DropzoneDirective,
-    RosterComponent
+    RosterComponent,
+    RosterPipe
   ],
   imports: [
     BrowserModule,
     AppRoutingModule
   ],
   providers: [
-    DropzoneDirective
+    DropzoneDirective,
+    RosterPipe
   ],
   bootstrap: [AppComponent]
 })
