@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Character } from 'src/app/class/character';
 import { DataParserService } from 'src/app/service/data-parser.service';
 import { RosterPipe } from 'src/app/pipe/roster.pipe';
 import { ClipboardService } from 'ngx-clipboard';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-roster',
@@ -10,6 +11,7 @@ import { ClipboardService } from 'ngx-clipboard';
   styleUrls: ['./roster.component.less']
 })
 export class RosterComponent implements OnInit {
+  dataDumpSub: Subscription;
   characters: Array<Character>;
   filteredCharacters: Array<Character>;
   filterMains: boolean;
@@ -18,6 +20,7 @@ export class RosterComponent implements OnInit {
   copied: boolean;
 
   constructor(private dps: DataParserService, private rosterPipe: RosterPipe, private clipboard: ClipboardService) {
+    this.dataDumpSub = new Subscription();
     this.characters = new Array<Character>();
     this.filteredCharacters = new Array<Character>();
     this.filterMains = true;
@@ -27,7 +30,7 @@ export class RosterComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.dps.dataDump.subscribe(async (dump: string) => {
+    this.dataDumpSub = this.dps.dataDump.subscribe(async (dump: string) => {
       console.log('roster window accepting dump');
       this.characters = await this.dps.prepareData(dump) as Array<Character>;
 
@@ -63,5 +66,9 @@ export class RosterComponent implements OnInit {
     console.log('copied to clipboard!');
     
     setTimeout(() => this.copied = !this.copied, 1000);
+  }
+
+  OnDestroy() {
+    this.dataDumpSub.unsubscribe();
   }
 }

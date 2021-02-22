@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Subject } from 'rxjs';
 import { DataParserService } from 'src/app/service/data-parser.service';
 
 @Component({

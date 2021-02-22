@@ -1,4 +1,6 @@
 import { Directive, HostBinding, HostListener, Output, EventEmitter, OnInit } from '@angular/core';
+import { Subject } from 'rxjs';
+import { DataParserService } from '../service/data-parser.service';
 
 @Directive({
   selector: '[appDropzone]'
@@ -19,7 +21,7 @@ export class DropzoneDirective implements OnInit {
     console.log('dropped file!');
     event.preventDefault();
     this.activated = false;
-
+    this.dps.clearData();
     
     if (event.dataTransfer) {
       const file = event.dataTransfer.files[0];
@@ -29,7 +31,7 @@ export class DropzoneDirective implements OnInit {
   @Output() guildData: EventEmitter<string>;
   reader: FileReader;
 
-  constructor() {
+  constructor(private dps: DataParserService) {
     console.log('dropzone directive');
     this.guildData = new EventEmitter<string>();
     this.reader = new FileReader();

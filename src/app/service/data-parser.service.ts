@@ -43,4 +43,9 @@ export class DataParserService {
 
     return stringBuilder;
   }
+
+  clearData() {
+    console.log('data cleared');
+    this.characters = new Array<Character>();
+  }
 }
