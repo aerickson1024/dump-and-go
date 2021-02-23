@@ -5,10 +5,12 @@
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
+    "build-prod": "ng build",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "aws-deploy": "aws s3 sync dist/dump-and-go/ s3://dump-and-go"
+    "aws-deploy": "aws s3 sync dist/dump-and-go/ s3://dump-and-go",
+    "deploy": "npm run build-prod && npm run aws-deploy"
   },
   "private": true,
   "dependencies": {
