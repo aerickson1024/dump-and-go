@@ -12,14 +12,18 @@ export class RosterPipe implements PipeTransform {
 
       characters.forEach((character: Character) => {
         if (args[0] && (character.note.toLowerCase() == 'main' || character.note.toLowerCase().includes('main '))) filteredCharacters.push(character);
-        else if (args[1] && (character.note.includes('*') || character.note.toLowerCase().includes('mainalt'))) filteredCharacters.push(character);
+        else if (
+          args[1] && (character.note.includes('*') || 
+          character.note.toLowerCase().includes('mainalt')) ||
+          character.note.toLowerCase().includes('main alt')) filteredCharacters.push(character);
         else if (
           args[2] && 
           character.note.toLowerCase() != character.name.toLowerCase() && 
-          character.note.toLowerCase() != 'main' &&
+          !character.note.toLowerCase().includes('main')  &&
           !character.note.toLowerCase().includes('main ') &&
-          !character.note.includes('*') &&
-          !character.note.toLowerCase().includes('mainalt')) filteredCharacters.push(character);
+          !character.note.toLowerCase().includes('mainalt') &&
+          !character.note.toLowerCase().includes('main alt') &&
+          !character.note.includes('*')) filteredCharacters.push(character);
       });
 
       return filteredCharacters;
