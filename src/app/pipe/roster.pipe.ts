@@ -11,19 +11,12 @@ export class RosterPipe implements PipeTransform {
       let filteredCharacters = new Array<Character>();
 
       characters.forEach((character: Character) => {
-        if (args[0] && (character.note.toLowerCase() == 'main' || character.note.toLowerCase().includes('main '))) filteredCharacters.push(character);
-        else if (
-          args[1] && (character.note.includes('*') || 
-          character.note.toLowerCase().includes('mainalt')) ||
-          character.note.toLowerCase().includes('main alt')) filteredCharacters.push(character);
-        else if (
-          args[2] && 
-          character.note.toLowerCase() != character.name.toLowerCase() && 
-          !character.note.toLowerCase().includes('main')  &&
-          !character.note.toLowerCase().includes('main ') &&
-          !character.note.toLowerCase().includes('mainalt') &&
-          !character.note.toLowerCase().includes('main alt') &&
-          !character.note.includes('*')) filteredCharacters.push(character);
+        let note = character.note.toLowerCase();
+        let name = character.name.toLowerCase();
+
+        if (args[0] && (note == 'main' || (note.includes('main ') && note.includes('/')))) filteredCharacters.push(character);
+        else if (args[1] && note.includes('(main alt)')) filteredCharacters.push(character);
+        else if (args[2] && note.includes('(alt)')) filteredCharacters.push(character);
       });
 
       return filteredCharacters;
