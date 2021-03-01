@@ -15,7 +15,7 @@ export class RosterPipe implements PipeTransform {
         let name = character.name.toLowerCase();
 
         if (args[0] && (note == 'main' || (note.includes('main ') && note.includes('/')))) filteredCharacters.push(character);
-        else if (args[1] && note.includes('(main alt)')) filteredCharacters.push(character);
+        else if (args[1] && note.includes('(main box)')) filteredCharacters.push(character);
         else if (args[2] && note.includes('(alt)')) filteredCharacters.push(character);
       });
 

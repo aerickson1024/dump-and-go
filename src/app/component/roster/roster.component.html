@@ -2,7 +2,7 @@
   <section class="controls-section" *ngIf="characters.length > 0">
     <section class="filter-buttons">
       <div class="filter mains" [class.activated]="filterMains" (click)="toggleMainsFilter()">Mains</div>
-      <div class="filter main-alts" [class.activated]="filterMainAlts" (click)="toggleMainAltsFilter()">Main Alts</div>
+      <div class="filter main-boxes" [class.activated]="filterMainBoxes" (click)="toggleMainBoxesFilter()">Main Boxes</div>
       <div class="filter alts" [class.activated]="filterAlts" (click)="toggleAltsFilter()">Alts</div>
     </section>
     <div class="copy" [class.copied]="copied" (click)="copyToClipboard()" title="Copy to Clipboard"><i class="far fa-copy"></i></div>
@@ -16,7 +16,7 @@
       <div class="item note">Public Note</div>
     </div>
     <hr *ngIf="characters.length > 0">
-    <div class="row" *ngFor="let character of characters | roster:filterMains:filterMainAlts:filterAlts">
+    <div class="row" *ngFor="let character of characters | roster:filterMains:filterMainBoxes:filterAlts">
       <div class="item name">{{ character.name }}</div>
       <div class="item level">{{ character.level }}</div>
       <div class="item eq-class">{{ character.eqClass }}</div>

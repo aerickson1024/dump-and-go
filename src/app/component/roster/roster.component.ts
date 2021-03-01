@@ -10,12 +10,12 @@ import { Subscription } from 'rxjs';
   templateUrl: './roster.component.html',
   styleUrls: ['./roster.component.less']
 })
-export class RosterComponent implements OnInit {
+export class RosterComponent implements OnInit, OnDestroy {
   dataDumpSub: Subscription;
   characters: Array<Character>;
   filteredCharacters: Array<Character>;
   filterMains: boolean;
-  filterMainAlts: boolean;
+  filterMainBoxes: boolean;
   filterAlts: boolean;
   copied: boolean;
 
@@ -24,7 +24,7 @@ export class RosterComponent implements OnInit {
     this.characters = new Array<Character>();
     this.filteredCharacters = new Array<Character>();
     this.filterMains = true;
-    this.filterMainAlts = true;
+    this.filterMainBoxes = true;
     this.filterAlts = true;
     this.copied = false;
   }
@@ -34,7 +34,7 @@ export class RosterComponent implements OnInit {
       console.log('roster window accepting dump');
       this.characters = await this.dps.prepareData(dump) as Array<Character>;
 
-      this.filteredCharacters = this.rosterPipe.transform(this.characters, this.filterMains, this.filterMainAlts, this.filterAlts);
+      this.filteredCharacters = this.rosterPipe.transform(this.characters, this.filterMains, this.filterMainBoxes, this.filterAlts);
     });
 
   }
@@ -42,19 +42,19 @@ export class RosterComponent implements OnInit {
   toggleMainsFilter() {
     console.log('toggle mains filter');
     this.filterMains = !this.filterMains;
-    this.filteredCharacters = this.rosterPipe.transform(this.characters, this.filterMains, this.filterMainAlts, this.filterAlts);
+    this.filteredCharacters = this.rosterPipe.transform(this.characters, this.filterMains, this.filterMainBoxes, this.filterAlts);
   }
 
-  toggleMainAltsFilter() {
-    console.log('toggle main-alts filter');
-    this.filterMainAlts = !this.filterMainAlts;
-    this.filteredCharacters = this.rosterPipe.transform(this.characters, this.filterMains, this.filterMainAlts, this.filterAlts);
+  toggleMainBoxesFilter() {
+    console.log('toggle main-boxes filter');
+    this.filterMainBoxes = !this.filterMainBoxes;
+    this.filteredCharacters = this.rosterPipe.transform(this.characters, this.filterMains, this.filterMainBoxes, this.filterAlts);
   }
 
   toggleAltsFilter() {
     console.log('toggle alts filter');
     this.filterAlts = !this.filterAlts;
-    this.filteredCharacters = this.rosterPipe.transform(this.characters, this.filterMains, this.filterMainAlts, this.filterAlts);
+    this.filteredCharacters = this.rosterPipe.transform(this.characters, this.filterMains, this.filterMainBoxes, this.filterAlts);
   }
 
   copyToClipboard() {
@@ -68,7 +68,7 @@ export class RosterComponent implements OnInit {
     setTimeout(() => this.copied = !this.copied, 1000);
   }
 
-  OnDestroy() {
+  ngOnDestroy() {
     this.dataDumpSub.unsubscribe();
   }
 }
